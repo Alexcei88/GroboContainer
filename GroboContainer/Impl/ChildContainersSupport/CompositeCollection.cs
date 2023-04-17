@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Collections.Generic;
 using GroboContainer.Core;
 using GroboContainer.Impl.Abstractions;
 using GroboContainer.Impl.ChildContainersSupport.Selectors;
@@ -54,6 +54,12 @@ namespace GroboContainer.Impl.ChildContainersSupport
         {
             //NOTE !!!
             return leafCollection.GetAll();
+        }
+
+        public Dictionary<Type, IAbstractionConfiguration> GetAllTypes()
+        {
+            //NOTE !!!
+            return leafCollection.GetAllTypes();
         }
 
         private readonly int containerTreeDepth;

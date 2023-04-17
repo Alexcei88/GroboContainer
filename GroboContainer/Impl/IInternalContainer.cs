@@ -1,6 +1,7 @@
 using System;
-
+using System.Collections.Generic;
 using GroboContainer.Config;
+using GroboContainer.Core;
 using GroboContainer.Impl.ClassCreation;
 using GroboContainer.Impl.Injection;
 using GroboContainer.Impl.Logging;
@@ -35,5 +36,7 @@ namespace GroboContainer.Impl
         Delegate GetCreationFunc(Type funcType, Func<Type, Delegate> factory);
 
         Type[] GetImplementationTypes(Type abstractionType);
+
+        IList<ServiceDescriptor> GetAllServiceDescriptors();
     }
 }

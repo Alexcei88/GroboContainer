@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Linq;
 
 using GroboContainer.Config;
 using GroboContainer.Core;
 using GroboContainer.Impl.Abstractions;
+using GroboContainer.Impl.Abstractions.AutoConfiguration;
 using GroboContainer.Impl.ClassCreation;
 using GroboContainer.Impl.Exceptions;
 using GroboContainer.Impl.Implementations;
@@ -238,6 +240,13 @@ namespace GroboContainer.Impl
                 result[i] = all[i].ObjectType;
             return result;
         }
+
+        public IList<ServiceDescriptor> GetAllServiceDescriptors()
+            => abstractionConfigurationCollection.GetAllTypes().Select(c =>
+                new ServiceDescriptor(c.Key, c.Value.GetImplementations().First().ObjectType,
+                    c.Value.GetImplementations().First() is AutoImplementationConfiguration,
+                    c.Value.GetImplementations().Length > 1))
+                .ToList();
 
         public void CallDispose()
         {

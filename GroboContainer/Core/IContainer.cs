@@ -1,5 +1,5 @@
 using System;
-
+using System.Collections.Generic;
 using GroboContainer.Config;
 
 namespace GroboContainer.Core
@@ -35,5 +35,7 @@ namespace GroboContainer.Core
         Func<T1, T2, T3, T4, T> GetCreationFunc<T1, T2, T3, T4, T>();
 
         Type[] GetImplementationTypes(Type abstractionType);
+
+        IList<ServiceDescriptor> GetAllServiceDescriptors();
     }
 }

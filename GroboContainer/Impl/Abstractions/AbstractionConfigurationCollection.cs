@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Linq;
 
 using GroboContainer.Impl.Abstractions.AutoConfiguration;
@@ -25,11 +26,12 @@ namespace GroboContainer.Impl.Abstractions
         }
 
         public IAbstractionConfiguration[] GetAll()
-        {
-            return cache.Values.ToArray();
-        }
+            => cache.Values.ToArray();
+
+        public Dictionary<Type, IAbstractionConfiguration> GetAllTypes()
+            => cache.ToDictionary(c => c.Key, c=> c.Value);
 
         private readonly Func<Type, IAbstractionConfiguration> createByType;
-        private readonly ConcurrentDictionary<Type, IAbstractionConfiguration> cache = new ConcurrentDictionary<Type, IAbstractionConfiguration>();
+        private readonly ConcurrentDictionary<Type, IAbstractionConfiguration> cache = new();
     }
 }

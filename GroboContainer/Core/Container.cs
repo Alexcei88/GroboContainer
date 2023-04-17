@@ -213,6 +213,8 @@ namespace GroboContainer.Core
             return internalContainer.GetImplementationTypes(abstractionType);
         }
 
+        public IList<ServiceDescriptor> GetAllServiceDescriptors() => internalContainer.GetAllServiceDescriptors();
+
         public string LastConstructionLog
         {
             get
