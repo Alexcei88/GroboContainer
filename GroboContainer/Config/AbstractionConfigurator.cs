@@ -62,6 +62,12 @@ namespace GroboContainer.Config
             abstractionConfigurationCollection.Add(abstractionType, abstractionConfiguration);
         }
 
+        public void ReplaceInstances(params object[] instances)
+        {
+            abstractionConfigurationCollection.Replace(abstractionType,
+                                                   new InstanceAbstractionConfiguration(classWrapperCreator, abstractionType, instances));
+        }
+
         #endregion
     }
 }

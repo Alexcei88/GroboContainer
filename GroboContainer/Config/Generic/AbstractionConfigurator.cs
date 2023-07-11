@@ -37,6 +37,12 @@ namespace GroboContainer.Config.Generic
             worker.Fail();
         }
 
+        public void ReplaceInstances(params T[] instances)
+        {
+            var objects = instances.Cast<object>().ToArray();
+            worker.ReplaceInstances(objects);
+        }
+
         #endregion
     }
 }
