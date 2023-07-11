@@ -7,6 +7,7 @@ namespace GroboContainer.Impl.Abstractions
     {
         IAbstractionConfiguration Get(Type abstractionType);
         void Add(Type abstractionType, IAbstractionConfiguration abstractionConfiguration);
+        void Replace(Type abstractionType, IAbstractionConfiguration abstractionConfiguration);
         IAbstractionConfiguration[] GetAll();
         Dictionary<Type, IAbstractionConfiguration> GetAllTypes();
     }

@@ -62,6 +62,14 @@ namespace GroboContainer.Config
             abstractionConfigurationCollection.Add(abstractionType, abstractionConfiguration);
         }
 
+        public void ReplaceType(Type type)
+        {
+            var implementation = implementationCache.GetOrCreate(type);
+            var implementationConfiguration = implementationConfigurationCache.GetOrCreate(implementation);
+            var abstractionConfiguration = new StupidAbstractionConfiguration(implementationConfiguration);
+            abstractionConfigurationCollection.Replace(abstractionType, abstractionConfiguration);
+        }
+
         #endregion
     }
 }

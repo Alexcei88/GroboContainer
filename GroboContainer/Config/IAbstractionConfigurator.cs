@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace GroboContainer.Config
 {
@@ -8,5 +8,6 @@ namespace GroboContainer.Config
         void Fail();
         void UseType(Type type);
         void UseTypes(Type[] types);
+        void ReplaceType(Type type);
     }
 }

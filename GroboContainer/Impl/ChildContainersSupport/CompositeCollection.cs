@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using GroboContainer.Core;
 using GroboContainer.Impl.Abstractions;
@@ -60,6 +60,14 @@ namespace GroboContainer.Impl.ChildContainersSupport
         {
             //NOTE !!!
             return leafCollection.GetAllTypes();
+        }
+
+        public void Replace(Type abstractionType, IAbstractionConfiguration abstractionConfiguration)
+        {
+            var collection = ChooseCollection(abstractionType);
+            if (!ReferenceEquals(collection, leafCollection))
+                throw new InvalidOperationException($"Type {abstractionType} cannot be configured");
+            leafCollection.Replace(abstractionType, abstractionConfiguration);
         }
 
         private readonly int containerTreeDepth;
