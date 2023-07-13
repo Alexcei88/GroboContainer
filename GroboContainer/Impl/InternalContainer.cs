@@ -242,7 +242,7 @@ namespace GroboContainer.Impl
         }
 
         public IList<ServiceDescriptor> GetAllServiceDescriptors()
-            => abstractionConfigurationCollection.GetAllTypes().Select(c =>
+            => abstractionConfigurationCollection.GetAllTypes().Where(c => c.Value.GetImplementations().Any()).Select(c =>
                 new ServiceDescriptor(c.Key, c.Value.GetImplementations().First().ObjectType,
                     c.Value.GetImplementations().First() is AutoImplementationConfiguration,
                     c.Value.GetImplementations().Length > 1))
